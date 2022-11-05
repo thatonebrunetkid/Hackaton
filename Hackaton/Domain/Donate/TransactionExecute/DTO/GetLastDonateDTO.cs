@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Donate.TransactionExecute.DTO
 {
-    public class GetLastTransactionAmountDTO
+    public class GetLastDonateDTO
     {
+        public string Title { get; set; }
         public Decimal Amount { get; set; }
+        public string Nick { get; set; }
     }
 }

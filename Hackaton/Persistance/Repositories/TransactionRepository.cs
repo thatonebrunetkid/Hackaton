@@ -19,7 +19,7 @@ namespace Persistance.Repositories
             this.DbContext = DbContext;
         }
 
-        public HttpStatusCode RegisterTransaction(Decimal amount, string TargetAccountId, string SederAccountId, string Title)
+        public HttpStatusCode RegisterTransaction(Decimal amount, string TargetAccountId, string SederAccountId, string Title, string Nick)
         {
             if (amount <= 0 || TargetAccountId is null || TargetAccountId == "" || SederAccountId is null || SederAccountId == "" || Title is null || Title == "") return HttpStatusCode.BadRequest;
 
@@ -29,7 +29,8 @@ namespace Persistance.Repositories
                Amount = amount,
                TargetAccountId = TargetAccountId,
                SenderAccountId = SederAccountId,
-               Title = Title
+               Title = Title,
+               Nick = Nick
            };
 
             try
@@ -43,12 +44,7 @@ namespace Persistance.Repositories
             }
         }
 
-        public async Task<Transaction> GetLastTransactionAmount(string AccountId)
-        {
-            return await DbContext.Transaction.Where(e => e.TargetAccountId == AccountId).OrderBy(e => e.TransactDate).LastAsync();
-        }
-
-        public async Task<Transaction> GetLastTransactionTitle(string AccountId)
+        public async Task<Transaction> GetLastTransaction(string AccountId)
         {
             return await DbContext.Transaction.Where(e => e.TargetAccountId == AccountId).OrderBy(e => e.TransactDate).LastAsync();
         }

@@ -11,5 +11,6 @@ namespace Application.AccountTypes.Contracts
     {
         HttpStatusCode MakeTransfer(string SourceAccount, string DestinationAccount, Decimal amount);
         Task<string> GetAccountById(int UserId);
+        Task<int> GetIdByAccount(string AccountNo);
     }
 }

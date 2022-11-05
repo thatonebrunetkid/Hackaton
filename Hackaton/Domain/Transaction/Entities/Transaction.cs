@@ -16,5 +16,6 @@ namespace Domain.Transaction.Entities
         public string TargetAccountId { get; set; }
         public string SenderAccountId { get; set; }
         public string Title { get; set; }
+        public string Nick { get; set; }
     }
 }

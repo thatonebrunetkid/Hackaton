@@ -38,6 +38,12 @@ namespace Persistance.Repositories
             return result.AccountNo;
         }
 
+        public async Task<int> GetIdByAccount(string AccountNo)
+        {
+            var result = await DbContext.Account.FirstAsync(e => e.AccountNo == AccountNo);
+            return result.UserId;
+        }
+
         
     }
 }

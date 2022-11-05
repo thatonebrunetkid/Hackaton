@@ -17,6 +17,7 @@ namespace Domain.Common.TransactionExecute.DTO
         public string Surname { get; set; }
         [JsonPropertyName("UserId")]
         public string SenderAccountId { get; set; }
+        public string Nick { get; set; }
    
     }
 }

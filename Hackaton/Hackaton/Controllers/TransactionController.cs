@@ -35,19 +35,12 @@ namespace Hackaton.Controllers
             }
         }
 
-        [Route("Last/Amount/{AccountId}")]
-        [HttpGet]
-        public async Task<ActionResult<GetLastTransactionAmountDTO>> GetLastDonateAmount(string AccountId)
-        {
-            var result = await Mediator.Send(new GetLastTransactionAmountQuerieRequest { AccountNumber = AccountId });
-            return Ok(result);
-        }
 
-        [Route("Last/Title/{AccountId}")]
+        [Route("Last/Donate/{AccountId}")]
         [HttpGet]
-        public async Task<ActionResult<GetLastTransactionTitleDTO>> GetLastDonateTitle(string AccountId)
+        public async Task<ActionResult<GetLastDonateDTO>> GetLastDonate(string AccountId)
         {
-            var result = await Mediator.Send(new GetLastTransactionTitleQuerieRequest { AccountNumber = AccountId });
+            var result = await Mediator.Send(new GetLastDonateQuerieRequest { AccountId = AccountId });
             return Ok(result);
         }
     }

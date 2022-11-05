@@ -39,7 +39,7 @@ namespace Application.DonateTypes.Handlers
             var TransferResult = AccountRepository.MakeTransfer(request.TransactionExecuteDTO.SenderAccountId, TargetAccountNumber, request.TransactionExecuteDTO.Amount);
             if (TransferResult != HttpStatusCode.OK) return TransferResult;
 
-            var TransactionResult = TransactionRepository.RegisterTransaction(request.TransactionExecuteDTO.Amount, TargetAccountNumber, request.TransactionExecuteDTO.SenderAccountId, request.TransactionExecuteDTO.DonateMessage);
+            var TransactionResult = TransactionRepository.RegisterTransaction(request.TransactionExecuteDTO.Amount, TargetAccountNumber, request.TransactionExecuteDTO.SenderAccountId, request.TransactionExecuteDTO.DonateMessage, request.TransactionExecuteDTO.Nick);
             if (TransactionResult != HttpStatusCode.OK) return TransactionResult;
             return HttpStatusCode.OK;
         }
